@@ -4,7 +4,7 @@
    ========================================================= */
 const SITE = {
   name: "Business Ed Lab",
-  email: "hello@businessedlab.com",          // your store email (not your school email)
+  email: "BusinessEdLab@gmail.com",          // store email
 
   // Paste your Payhip product links here once your products are set up.
   // Example: "https://payhip.com/b/AbC12"

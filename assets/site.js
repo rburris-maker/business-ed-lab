@@ -62,8 +62,8 @@ function header(active){
   return `<div class="wrap">
     <a class="brand" href="/">${LOGO}<span>Business Ed <b>Lab</b></span></a>
     <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-    <nav class="nav">${link('/store','Store')}${link('/case-cracker','Case Crackers')}${link('/free','Free Resource')}${link('/about','About')}
-      <a class="btn btn-gold" href="/stitch-and-stride">Stitch &amp; Stride</a></nav></div>`;
+    <nav class="nav">${link('/store','Store')}${link('/case-cracker','Case Crackers')}${link('/stitch-and-stride','Stitch &amp; Stride')}${link('/about','About')}
+      <a class="btn btn-gold" href="/free">Free case</a></nav></div>`;
 }
 function footer(){
   const s=socialLinks();
@@ -96,6 +96,8 @@ function storeFilter(){
       sh.hidden = ![...sh.querySelectorAll('[data-courses]')].some(x=>!x.hidden);
     });
   });
+  const c=new URLSearchParams(location.search).get('course');
+  const pre=c && bar.querySelector('[data-course="'+c+'"]'); if(pre) pre.click();
 }
 document.addEventListener('DOMContentLoaded',()=>{
   storeFilter();

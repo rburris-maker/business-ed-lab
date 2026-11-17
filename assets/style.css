@@ -190,3 +190,23 @@ details p{margin-top:10px;color:var(--muted)}
 .product.case .muted{font-size:.9rem;line-height:1.45}
 .product.case .price{font-size:1.25rem}
 .shelf-head .count{font-family:var(--sans,inherit);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--steel);vertical-align:middle;margin-left:6px}
+
+/* home: cover stack + product lines */
+.cover-stack{position:relative;height:500px}
+.cover-stack a{position:absolute;width:66%;border-radius:14px;overflow:hidden;box-shadow:0 26px 50px rgba(0,0,0,.4);transition:transform .2s ease}
+.cover-stack a img{display:block;width:100%}
+.cover-stack a:nth-child(1){left:-4%;top:70px;transform:rotate(-6deg);z-index:1}
+.cover-stack a:nth-child(2){right:-4%;top:56px;transform:rotate(5deg);z-index:2}
+.cover-stack a:nth-child(3){left:17%;top:0;transform:rotate(0);z-index:3}
+.cover-stack a:hover{transform:translateY(-6px) rotate(0);z-index:4}
+@media (max-width:900px){.cover-stack{height:380px;max-width:440px;margin:10px auto 0}}
+@media (max-width:480px){.cover-stack{height:300px}}
+.line{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:box-shadow .2s ease,transform .2s ease}
+.line:hover{box-shadow:0 14px 32px rgba(27,42,65,.12);transform:translateY(-2px)}
+.line img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.line .body{padding:20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.line .meta{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--steel)}
+.line .go{margin-top:auto;padding-top:8px;font-weight:700;color:var(--navy)}
+.course-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.course-links a{padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;text-decoration:none;font-weight:600;color:var(--ink)}
+.course-links a:hover{border-color:var(--navy)}

@@ -105,6 +105,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   const f=document.querySelector('.site-footer'); if(f) f.innerHTML=footer();
   document.querySelectorAll('[data-socials]').forEach(el=>el.innerHTML=socialLinks());
   document.querySelectorAll('[data-email]').forEach(el=>{el.href='mailto:'+SITE.email; if(!el.textContent.trim()) el.textContent=SITE.email;});
+  // Backup for devices with no email app: copy the address and say so.
+  document.addEventListener('click',e=>{
+    const a=e.target.closest('a[href^="mailto:"]'); if(!a) return;
+    const addr=a.getAttribute('href').slice(7);
+    const done=()=>toast('Email address copied: '+addr+'. Paste it into your email.');
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(addr).then(done,()=>toast('Email me at '+addr));}
+    else toast('Email me at '+addr);
+  });
   document.querySelectorAll('[data-logo]').forEach(el=>el.innerHTML=LOGO);
   wireCheckout();
   // product gallery

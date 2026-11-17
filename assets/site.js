@@ -10,7 +10,7 @@ const SITE = {
   // Example: "https://payhip.com/b/AbC12"
   checkout: {
     stitchAndStride: "https://payhip.com/b/rkgnu",
-    freeResource:    "PAYHIP_LINK_FREE_RESOURCE"
+    freeResource:    "https://payhip.com/b/cgKVJ"
   },
 
   // Optional: your Teachers Pay Teachers store. Leave "" to hide it.

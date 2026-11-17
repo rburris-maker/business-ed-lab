@@ -10,7 +10,9 @@ const SITE = {
   // Example: "https://payhip.com/b/AbC12"
   checkout: {
     stitchAndStride: "https://payhip.com/b/rkgnu",
-    freeResource:    "https://payhip.com/b/cgKVJ"
+    freeResource:    "https://payhip.com/b/cgKVJ",
+    dominos:         "https://payhip.com/b/gzQHx",
+    crocs:           "https://payhip.com/b/Kj8hn"
   },
 
   // Optional: your Teachers Pay Teachers store. Leave "" to hide it.
@@ -47,7 +49,7 @@ function header(active){
   return `<div class="wrap">
     <a class="brand" href="/">${LOGO}<span>Business Ed <b>Lab</b></span></a>
     <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-    <nav class="nav">${link('/store','Store')}${link('/free','Free Resource')}${link('/about','About')}
+    <nav class="nav">${link('/store','Store')}${link('/case-cracker','Case Crackers')}${link('/free','Free Resource')}${link('/about','About')}
       <a class="btn btn-gold" href="/stitch-and-stride">Stitch &amp; Stride</a></nav></div>`;
 }
 function footer(){
@@ -56,7 +58,7 @@ function footer(){
     <div><a class="brand" href="/" style="color:#fff">${LOGO}<span>Business Ed <b>Lab</b></span></a>
       <p style="margin-top:12px">Classroom-tested business resources for CTE, dual-credit and intro college teachers.</p>
       ${s?`<div class="socials">${s}</div>`:''}</div>
-    <div><h4>Shop</h4><ul><li><a href="/store">All resources</a></li><li><a href="/stitch-and-stride">Stitch &amp; Stride</a></li><li><a href="/free">Free resource</a></li>${SITE.tpt?`<li><a href="${SITE.tpt}" target="_blank" rel="noopener">Teachers Pay Teachers</a></li>`:''}</ul></div>
+    <div><h4>Shop</h4><ul><li><a href="/store">All resources</a></li><li><a href="/case-cracker">Case Cracker series</a></li><li><a href="/stitch-and-stride">Stitch &amp; Stride</a></li><li><a href="/free">Free resource</a></li>${SITE.tpt?`<li><a href="${SITE.tpt}" target="_blank" rel="noopener">Teachers Pay Teachers</a></li>`:''}</ul></div>
     <div><h4>Info</h4><ul><li><a href="/about">About</a></li><li><a href="/license">Terms of use</a></li><li><a href="mailto:${SITE.email}">${SITE.email}</a></li></ul></div>
   </div><div class="legal"><span>© ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</span><span>Secure checkout and instant download through Payhip.</span></div></div>`;
 }
@@ -68,7 +70,22 @@ function wireCheckout(){
     else { a.href='#'; a.addEventListener('click',e=>{e.preventDefault();toast('Checkout opens soon. Thanks for your patience!');}); }
   });
 }
+function storeFilter(){
+  const bar=document.querySelector('[data-filter]'); if(!bar) return;
+  bar.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    const c=b.dataset.course;
+    document.querySelectorAll('[data-courses]').forEach(card=>{
+      card.hidden = c!=='all' && !card.dataset.courses.split(',').includes(c);
+    });
+    document.querySelectorAll('.shelf').forEach(sh=>{
+      sh.hidden = ![...sh.querySelectorAll('[data-courses]')].some(x=>!x.hidden);
+    });
+  });
+}
 document.addEventListener('DOMContentLoaded',()=>{
+  storeFilter();
   const h=document.querySelector('.site-header'); if(h) h.innerHTML=header(h.dataset.active||'');
   const f=document.querySelector('.site-footer'); if(f) f.innerHTML=footer();
   document.querySelectorAll('[data-socials]').forEach(el=>el.innerHTML=socialLinks());

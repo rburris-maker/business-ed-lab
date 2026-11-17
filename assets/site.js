@@ -18,7 +18,7 @@ const SITE = {
 
   // Social links. Leave any as "" and its icon disappears.
   social: {
-    instagram: "",
+    instagram: "https://www.instagram.com/business_edlab/",
     tiktok:    "",
     facebook:  "",
     pinterest: "",

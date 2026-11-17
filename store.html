@@ -15,22 +15,47 @@
   <p class="muted" style="margin-top:10px">Every resource is classroom-tested, editable, and works alongside the textbook you already use.</p></div>
 </section>
 
-<section>
-  <div class="wrap grid g3">
-    <a class="product" href="/stitch-and-stride" style="text-decoration:none">
+<section style="padding-top:34px">
+  <div class="wrap">
+    <div class="filters" data-filter>
+      <span>Course</span>
+      <button data-course="all" aria-pressed="true">All</button>
+      <button data-course="intro" aria-pressed="false">Intro to Business</button>
+      <button data-course="management" aria-pressed="false">Management</button>
+      <button data-course="marketing" aria-pressed="false">Marketing</button>
+      <button data-course="entrepreneurship" aria-pressed="false">Entrepreneurship</button>
+    </div>
+
+    <div class="shelf" id="case-cracker">
+      <div class="shelf-head"><div><h2>Case Cracker series</h2><p>One real company, one hard call, 60 minutes. Start with Netflix, it's free.</p></div><a href="/case-cracker">How Case Crackers work →</a></div>
+      <div class="grid g3">
+    <a class="product" href="/free" style="text-decoration:none" data-courses="intro,management,entrepreneurship">
+      <div class="thumb"><img src="/assets/img/case-cracker-netflix.jpg" alt="Case Cracker: Netflix 2011 cover"></div>
+      <div class="info"><span class="meta">Case #1 · 60 min · Strategy</span><h3>Netflix 2011</h3><p class="muted" style="font-size:.95rem">Streaming costs are climbing and DVDs are fading. Students make the call, then see what Netflix did.</p>
+      <div class="row"><span class="price">Free</span><span class="btn btn-navy" style="padding:10px 16px">Get it</span></div></div>
+    </a>
+    <div class="product" data-courses="intro,management,marketing,entrepreneurship">
+      <a class="thumb" href="/case-cracker#dominos"><img src="/assets/img/case-cracker-dominos.jpg" alt="Case Cracker: Domino's 2009 cover"></a>
+      <div class="info"><span class="meta">Case #2 · 60 min · Business</span><h3>Domino's 2009</h3><p class="muted" style="font-size:.95rem">Customers say the pizza tastes like cardboard and the stock is under $3. What do you do?</p>
+      <div class="row"><span class="price">$4</span><a class="btn btn-navy" data-checkout="dominos" style="padding:10px 16px">Buy</a></div></div>
+    </div>
+    <div class="product" data-courses="intro,marketing,entrepreneurship">
+      <a class="thumb" href="/case-cracker#crocs"><img src="/assets/img/case-cracker-crocs.jpg" alt="Case Cracker: Crocs 2017 cover"></a>
+      <div class="info"><span class="meta">Case #3 · 60 min · Marketing</span><h3>Crocs 2017</h3><p class="muted" style="font-size:.95rem">How do you market a shoe the whole world calls ugly, and who do you market it to?</p>
+      <div class="row"><span class="price">$4</span><a class="btn btn-navy" data-checkout="crocs" style="padding:10px 16px">Buy</a></div></div>
+    </div>
+      </div>
+    </div>
+
+    <div class="shelf" id="simulations">
+      <div class="shelf-head"><div><h2>Simulations</h2><p>Multi-week units where students run a company and live with their decisions.</p></div></div>
+      <div class="grid g3">
+    <a class="product" href="/stitch-and-stride" style="text-decoration:none" data-courses="management,intro,entrepreneurship">
       <div class="thumb"><img src="/assets/img/stitch-stride-cover.jpg" alt="Stitch & Stride cover"></div>
       <div class="info"><span class="meta">Simulation · 8 weeks · Management</span><h3>Stitch &amp; Stride</h3><p class="muted" style="font-size:.95rem">Students run an athletic apparel company; an Excel engine turns their decisions into a stock price.</p>
       <div class="row"><span class="price">$39</span><span class="btn btn-navy" style="padding:10px 16px">View</span></div></div>
     </a>
-    <a class="product" href="/free" style="text-decoration:none">
-      <div class="thumb"><img src="/assets/img/case-cracker-netflix.jpg" alt="Case Cracker: Netflix 2011 cover"></div>
-      <div class="info"><span class="meta">Case activity · 60 minutes · Free</span><h3>Case Cracker: Netflix 2011</h3><p class="muted" style="font-size:.95rem">Students run Netflix in July 2011 and make the call on streaming and DVDs. Then comes the reveal.</p>
-      <div class="row"><span class="price">Free</span><span class="btn btn-navy" style="padding:10px 16px">View</span></div></div>
-    </a>
-    <div class="product placeholder">
-      <div class="thumb">Coming soon</div>
-      <div class="info"><span class="meta">Project</span><h3>Next resource</h3><p class="muted" style="font-size:.95rem">Real-world business projects with rubrics, built for CTE classrooms.</p>
-      <div class="row"><a class="btn btn-line" href="/free" style="padding:10px 16px">Notify me</a></div></div>
+      </div>
     </div>
   </div>
 </section>

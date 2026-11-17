@@ -11,8 +11,20 @@ const SITE = {
   checkout: {
     stitchAndStride: "https://payhip.com/b/rkgnu",
     freeResource:    "https://payhip.com/b/cgKVJ",
-    dominos:         "https://payhip.com/b/gzQHx",
-    crocs:           "https://payhip.com/b/Kj8hn"
+    dominos: "https://payhip.com/b/gzQHx",
+    crocs: "https://payhip.com/b/Kj8hn",
+    starbucks: "https://payhip.com/b/QV25w",
+    marvel: "https://payhip.com/b/mJF9x",
+    costco: "https://payhip.com/b/lZLQB",
+    tylenol: "https://payhip.com/b/AY8de",
+    apple: "https://payhip.com/b/2j4aq",
+    oldspice: "https://payhip.com/b/X10T7",
+    stanley: "https://payhip.com/b/9IWwb",
+    nintendo: "https://payhip.com/b/mVURu",
+    airbnb: "https://payhip.com/b/j8YfC",
+    ring: "https://payhip.com/b/YgHM8",
+    disney: "https://payhip.com/b/3F0AZ",
+    lego: "https://payhip.com/b/Bahq8"
   },
 
   // Optional: your Teachers Pay Teachers store. Leave "" to hide it.

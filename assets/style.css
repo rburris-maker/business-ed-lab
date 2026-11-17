@@ -183,3 +183,10 @@ details p{margin-top:10px;color:var(--muted)}
 .steps4 b{font-family:var(--serif);color:var(--gold);font-size:1.6rem;display:block}
 @media (max-width:760px){.case-row{grid-template-columns:1fr}.steps4{grid-template-columns:repeat(2,1fr)}}
 .product a.thumb{display:block}
+
+.btn-sm{padding:9px 15px;font-size:.92rem}
+.product.case .info{padding:16px 18px;gap:6px}
+.product.case h3{font-size:1.12rem}
+.product.case .muted{font-size:.9rem;line-height:1.45}
+.product.case .price{font-size:1.25rem}
+.shelf-head .count{font-family:var(--sans,inherit);font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--steel);vertical-align:middle;margin-left:6px}

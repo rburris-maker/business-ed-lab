@@ -9,7 +9,7 @@ const SITE = {
   // Paste your Payhip product links here once your products are set up.
   // Example: "https://payhip.com/b/AbC12"
   checkout: {
-    stitchAndStride: "PAYHIP_LINK_STITCH_AND_STRIDE",
+    stitchAndStride: "https://payhip.com/b/rkgnu",
     freeResource:    "PAYHIP_LINK_FREE_RESOURCE"
   },
 

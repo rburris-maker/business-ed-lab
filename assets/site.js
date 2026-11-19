@@ -27,7 +27,8 @@ const SITE = {
     lego: "https://payhip.com/b/Bahq8",
     investorRoom: "https://payhip.com/b/XMp3I",
     doorbuster: "https://payhip.com/b/LvAlV",
-    owlCreek: "https://payhip.com/b/7aRB5"
+    owlCreek: "https://payhip.com/b/7aRB5",
+    legalHealthCheck: "https://payhip.com/b/GtkYR"
   },
 
   // Optional: your Teachers Pay Teachers store. Leave "" to hide it.
@@ -64,7 +65,7 @@ function header(active){
   return `<div class="wrap">
     <a class="brand" href="/">${LOGO}<span>Business Ed <b>Lab</b></span></a>
     <button class="menu-btn" aria-label="Menu" onclick="document.querySelector('.nav').classList.toggle('open')">&#9776;</button>
-    <nav class="nav">${link('/store','Store')}${link('/case-cracker','Case Crackers')}${link('/stitch-and-stride','Stitch &amp; Stride')}${link('/about','About')}
+    <nav class="nav">${link('/store','All resources')}${link('/case-cracker','Case Crackers')}${link('/store?type=simulation','Simulations')}${link('/store?type=project','Projects')}${link('/about','About')}
       <a class="btn btn-gold" href="/free">Free case</a></nav></div>`;
 }
 function footer(){
@@ -73,7 +74,7 @@ function footer(){
     <div><a class="brand" href="/" style="color:#fff">${LOGO}<span>Business Ed <b>Lab</b></span></a>
       <p style="margin-top:12px">Classroom-tested business resources for CTE, dual-credit and intro college teachers.</p>
       ${s?`<div class="socials">${s}</div>`:''}</div>
-    <div><h4>Shop</h4><ul><li><a href="/store">All resources</a></li><li><a href="/case-cracker">Case Cracker series</a></li><li><a href="/stitch-and-stride">Stitch &amp; Stride</a></li><li><a href="https://payhip.com/b/XMp3I" target="_blank" rel="noopener">The Investor Room</a></li><li><a href="https://payhip.com/b/LvAlV" target="_blank" rel="noopener">The Doorbuster Disaster</a></li><li><a href="https://payhip.com/b/7aRB5" target="_blank" rel="noopener">Midnight at Owl Creek</a></li><li><a href="/free">Free resource</a></li>${SITE.tpt?`<li><a href="${SITE.tpt}" target="_blank" rel="noopener">Teachers Pay Teachers</a></li>`:''}</ul></div>
+    <div><h4>Shop</h4><ul><li><a href="/store">All resources</a></li><li><a href="/case-cracker">Case Cracker series</a></li><li><a href="/store?type=simulation">Simulations &amp; games</a></li><li><a href="/store?type=project">Semester projects</a></li><li><a href="/free">Free resource</a></li>${SITE.tpt?`<li><a href="${SITE.tpt}" target="_blank" rel="noopener">Teachers Pay Teachers</a></li>`:''}</ul></div>
     <div><h4>Info</h4><ul><li><a href="/about">About</a></li><li><a href="/license">Terms of use</a></li><li><a href="mailto:${SITE.email}">${SITE.email}</a></li></ul></div>
   </div><div class="legal"><span>© ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</span><span>Secure checkout and instant download through Payhip.</span></div></div>`;
 }
@@ -85,21 +86,72 @@ function wireCheckout(){
     else { a.href='#'; a.addEventListener('click',e=>{e.preventDefault();toast('Checkout opens soon. Thanks for your patience!');}); }
   });
 }
+/* Store finder: search box plus Type / Course / Length chips.
+   Cards take data-type and data-time from their shelf unless they set their own. */
 function storeFilter(){
   const bar=document.querySelector('[data-filter]'); if(!bar) return;
+  const cards=[...document.querySelectorAll('[data-courses]')];
+  const shelves=[...document.querySelectorAll('.shelf')];
+  const KEYS=['type','course','time'];
+  cards.forEach(c=>{
+    const sh=c.closest('.shelf');
+    if(!c.dataset.type) c.dataset.type=(sh&&sh.dataset.type)||'';
+    if(!c.dataset.time) c.dataset.time=(sh&&sh.dataset.time)||'';
+    c._text=c.textContent.toLowerCase();
+  });
+  const state={type:'all',course:'all',time:'all',q:''};
+  const search=bar.querySelector('[data-search]');
+  const status=document.querySelector('[data-results]');
+  const empty=document.querySelector('[data-empty]');
+  const keyOf=b=>KEYS.find(k=>b.dataset[k]!==undefined);
+  bar.querySelectorAll('button[data-type],button[data-time]').forEach(b=>{
+    const k=keyOf(b); if(b.dataset[k]==='all') return;
+    const n=cards.filter(c=>c.dataset[k]===b.dataset[k]).length;
+    b.insertAdjacentHTML('beforeend','<span>'+n+'</span>');
+  });
+  function apply(push){
+    let n=0;
+    cards.forEach(c=>{
+      const ok=(state.course==='all'||c.dataset.courses.split(',').includes(state.course))
+        &&(state.type==='all'||c.dataset.type===state.type)
+        &&(state.time==='all'||c.dataset.time===state.time)
+        &&(!state.q||c._text.includes(state.q));
+      c.hidden=!ok; if(ok) n++;
+    });
+    shelves.forEach(sh=>{
+      const vis=[...sh.querySelectorAll('[data-courses]')].filter(x=>!x.hidden).length;
+      sh.hidden=!vis;
+      const cnt=sh.querySelector('[data-count]');
+      if(cnt) cnt.textContent=vis+' '+(vis===1?cnt.dataset.one:cnt.dataset.many);
+    });
+    bar.querySelectorAll('button').forEach(b=>{const k=keyOf(b); if(k) b.setAttribute('aria-pressed',state[k]===b.dataset[k]);});
+    const active=KEYS.some(k=>state[k]!=='all')||state.q;
+    if(status) status.innerHTML=active
+      ?'Showing <b>'+n+'</b> of '+cards.length+' <button type="button" class="clear" data-clear>Clear filters</button>'
+      :'<b>'+cards.length+'</b> resources';
+    if(empty) empty.hidden=n>0;
+    if(push){
+      const p=new URLSearchParams();
+      KEYS.forEach(k=>{if(state[k]!=='all') p.set(k,state[k]);});
+      if(state.q) p.set('q',state.q);
+      const qs=p.toString();
+      history.replaceState(null,'',location.pathname+(qs?'?'+qs:''));
+    }
+  }
   bar.addEventListener('click',e=>{
     const b=e.target.closest('button'); if(!b) return;
-    bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
-    const c=b.dataset.course;
-    document.querySelectorAll('[data-courses]').forEach(card=>{
-      card.hidden = c!=='all' && !card.dataset.courses.split(',').includes(c);
-    });
-    document.querySelectorAll('.shelf').forEach(sh=>{
-      sh.hidden = ![...sh.querySelectorAll('[data-courses]')].some(x=>!x.hidden);
-    });
+    const k=keyOf(b); if(!k) return;
+    state[k]=b.dataset[k]; apply(true);
   });
-  const c=new URLSearchParams(location.search).get('course');
-  const pre=c && bar.querySelector('[data-course="'+c+'"]'); if(pre) pre.click();
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('[data-clear]')) return;
+    KEYS.forEach(k=>state[k]='all'); state.q=''; if(search) search.value=''; apply(true);
+  });
+  if(search) search.addEventListener('input',()=>{state.q=search.value.trim().toLowerCase(); apply(true);});
+  const p=new URLSearchParams(location.search);
+  KEYS.forEach(k=>{const v=p.get(k); if(v&&bar.querySelector('[data-'+k+'="'+v+'"]')) state[k]=v;});
+  if(search&&p.get('q')){search.value=p.get('q'); state.q=p.get('q').trim().toLowerCase();}
+  apply(false);
 }
 document.addEventListener('DOMContentLoaded',()=>{
   storeFilter();

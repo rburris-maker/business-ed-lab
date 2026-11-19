@@ -17,20 +17,80 @@
 
 <section style="padding-top:34px">
   <div class="wrap">
-    <div class="filters" data-filter>
-      <span>Course</span>
-      <button data-course="all" aria-pressed="true">All</button>
-      <button data-course="intro" aria-pressed="false">Intro to Business</button>
-      <button data-course="management" aria-pressed="false">Management</button>
-      <button data-course="marketing" aria-pressed="false">Marketing</button>
-      <button data-course="entrepreneurship" aria-pressed="false">Entrepreneurship</button>
-      <button data-course="finance" aria-pressed="false">Finance</button>
-      <button data-course="economics" aria-pressed="false">Economics</button>
-      <button data-course="ethics" aria-pressed="false">Ethics</button>
+    <div class="finder" data-filter>
+      <div class="top">
+        <input type="search" data-search placeholder="Search by company, topic or title (try &quot;pricing&quot; or &quot;Apple&quot;)" aria-label="Search resources">
+        <span class="results" data-results aria-live="polite"></span>
+      </div>
+      <div class="filters">
+        <span>Type</span>
+        <button data-type="all" aria-pressed="true">All</button>
+        <button data-type="simulation" aria-pressed="false">Simulations &amp; games</button>
+        <button data-type="project" aria-pressed="false">Semester projects</button>
+        <button data-type="case" aria-pressed="false">Case Crackers</button>
+      </div>
+      <div class="filters">
+        <span>Course</span>
+        <button data-course="all" aria-pressed="true">All</button>
+        <button data-course="intro" aria-pressed="false">Intro to Business</button>
+        <button data-course="management" aria-pressed="false">Management</button>
+        <button data-course="marketing" aria-pressed="false">Marketing</button>
+        <button data-course="entrepreneurship" aria-pressed="false">Entrepreneurship</button>
+        <button data-course="finance" aria-pressed="false">Finance</button>
+        <button data-course="economics" aria-pressed="false">Economics</button>
+        <button data-course="law" aria-pressed="false">Business Law</button>
+        <button data-course="ethics" aria-pressed="false">Ethics</button>
+      </div>
+      <div class="filters">
+        <span>Length</span>
+        <button data-time="all" aria-pressed="true">Any</button>
+        <button data-time="period" aria-pressed="false">One class period</button>
+        <button data-time="multiweek" aria-pressed="false">Multi-week</button>
+        <button data-time="semester" aria-pressed="false">Full semester</button>
+      </div>
+    </div>
+    <p class="empty-note" data-empty hidden><b>Nothing matches yet.</b>Try a different word or clear the filters.</p>
+
+    <div class="shelf" id="simulations" data-type="simulation" data-time="period">
+      <div class="shelf-head"><div><h2>Simulations &amp; games <span class="count" data-count data-one="resource" data-many="resources">4 resources</span></h2><p>Students run a company or invest pretend money, then live with their decisions.</p></div></div>
+      <div class="grid g3">
+    <a class="product" href="/stitch-and-stride" style="text-decoration:none" data-courses="management,intro,entrepreneurship" data-time="multiweek">
+      <div class="thumb"><img src="/assets/img/stitch-stride-cover.jpg" alt="Stitch & Stride cover"></div>
+      <div class="info"><span class="meta">Simulation · 8 weeks · Management</span><h3>Stitch &amp; Stride</h3><p class="muted" style="font-size:.95rem">Students run an athletic apparel company; an Excel engine turns their decisions into a stock price.</p>
+      <div class="row"><span class="price">$39</span><span class="btn btn-navy" style="padding:10px 16px">View</span></div></div>
+    </a>
+    <div class="product" data-courses="entrepreneurship,finance,intro">
+      <a class="thumb" href="https://payhip.com/b/XMp3I" target="_blank" rel="noopener"><img src="/assets/img/investor-room-cover.jpg" alt="The Investor Room cover"></a>
+      <div class="info"><span class="meta">Game · 90 minutes · Investing</span><h3>The Investor Room</h3><p class="muted" style="font-size:.95rem">Firms get $10,000, hunt the red flags in five startup pitches, place their bets, then see who made money. A self-scoring workbook runs the leaderboard.</p>
+      <div class="row"><span class="price">$12</span><a class="btn btn-navy" data-checkout="investorRoom" style="padding:10px 16px">Buy</a></div></div>
+    </div>
+    <div class="product" data-courses="marketing,ethics,law,management,intro">
+      <a class="thumb" href="https://payhip.com/b/LvAlV" target="_blank" rel="noopener"><img src="https://pe56d.s3.amazonaws.com/o_1k7ps3gfdmtl6rr1ki839uli51f.jpg" alt="The Doorbuster Disaster cover" style="object-position:left center"></a>
+      <div class="info"><span class="meta">Simulation · 90 minutes · Business law &amp; customer service</span><h3>The Doorbuster Disaster</h3><p class="muted" style="font-size:.95rem">Teams run a big-box store through six Black Friday crises while a self-scoring Google Sheets dashboard puts every decision on the projector.</p>
+      <p style="font-size:.9rem;margin:6px 0 0"><b>Free through Black Friday</b> with code <b>DOORBUSTER</b></p>
+      <div class="row"><span class="price">$15</span><a class="btn btn-navy" data-checkout="doorbuster" style="padding:10px 16px">Buy</a></div></div>
+    </div>
+    <div class="product" data-courses="management,economics,law,intro">
+      <a class="thumb" href="https://payhip.com/b/7aRB5" target="_blank" rel="noopener"><img src="https://pe56d.s3.amazonaws.com/o_1k7q7kur01r8ctqu1d7oliv1lkn1f.jpg" alt="Midnight at Owl Creek cover" style="object-position:left center"></a>
+      <div class="info"><span class="meta">Simulation · 50 or 75 minutes · Collective bargaining</span><h3>Midnight at Owl Creek</h3><p class="muted" style="font-size:.95rem">A union contract expires at midnight. Teams bargain wages, health premiums, overtime and a two-tier pay scale, then find out what their deal left on the table.</p>
+      <div class="row"><span class="price">$12</span><a class="btn btn-navy" data-checkout="owlCreek" style="padding:10px 16px">Buy</a></div></div>
+    </div>
+      </div>
     </div>
 
-    <div class="shelf" id="case-cracker">
-      <div class="shelf-head"><div><h2>Case Cracker series <span class="count">15 cases</span></h2><p>One real company, one hard call, 60 minutes. $4 each. Start with Netflix, it's free.</p></div><a href="/case-cracker">How Case Crackers work →</a></div>
+    <div class="shelf" id="projects" data-type="project" data-time="semester">
+      <div class="shelf-head"><div><h2>Semester projects <span class="count" data-count data-one="resource" data-many="resources">1 resource</span></h2><p>One assignment thread that runs alongside your whole course.</p></div></div>
+      <div class="grid g3">
+    <div class="product" id="legal-health-check" data-courses="law,ethics,entrepreneurship">
+      <a class="thumb" href="https://payhip.com/b/GtkYR" target="_blank" rel="noopener"><img src="/assets/img/legal-health-check-cover.jpg" alt="Legal Health Check cover"></a>
+      <div class="info"><span class="meta">Project · Full semester · Business law</span><h3>Legal Health Check</h3><p class="muted" style="font-size:.95rem">Students become the legal advisor to one of 12 small businesses and find its legal problems in 48 realistic exhibits. Four checkpoint memos and a final report, with a full answer key.</p>
+      <div class="row"><span class="price">$29</span><a class="btn btn-navy" data-checkout="legalHealthCheck" style="padding:10px 16px">Buy</a></div></div>
+    </div>
+      </div>
+    </div>
+
+    <div class="shelf" id="case-cracker" data-type="case" data-time="period">
+      <div class="shelf-head"><div><h2>Case Cracker series <span class="count" data-count data-one="case" data-many="cases">15 cases</span></h2><p>One real company, one hard call, 60 minutes. $4 each. Start with Netflix, it's free.</p></div><a href="/case-cracker">How Case Crackers work →</a></div>
       <div class="grid g4">
     <div class="product case" id="netflix" data-courses="intro,management,entrepreneurship">
       <a class="thumb" href="/free"><img src="/assets/img/case-cracker-netflix.jpg" alt="Case Cracker: Netflix, 2011 cover" loading="lazy"></a>
@@ -106,33 +166,6 @@
       <a class="thumb" href="https://payhip.com/b/Bahq8" target="_blank" rel="noopener"><img src="/assets/img/case-cracker-lego.jpg" alt="Case Cracker: LEGO, 2004 cover" loading="lazy"></a>
       <div class="info"><span class="meta">Case #15 · Management</span><h3>LEGO, 2004</h3><p class="muted">LEGO is losing money fast. Do you keep expanding, or go back to the brick, and what do you cut?</p>
       <div class="row"><span class="price">$4</span><a class="btn btn-navy btn-sm" data-checkout="lego">Buy</a></div></div>
-    </div>
-      </div>
-    </div>
-
-    <div class="shelf" id="simulations">
-      <div class="shelf-head"><div><h2>Simulations &amp; games</h2><p>Students run a company or invest pretend money, then live with their decisions.</p></div></div>
-      <div class="grid g3">
-    <a class="product" href="/stitch-and-stride" style="text-decoration:none" data-courses="management,intro,entrepreneurship">
-      <div class="thumb"><img src="/assets/img/stitch-stride-cover.jpg" alt="Stitch & Stride cover"></div>
-      <div class="info"><span class="meta">Simulation · 8 weeks · Management</span><h3>Stitch &amp; Stride</h3><p class="muted" style="font-size:.95rem">Students run an athletic apparel company; an Excel engine turns their decisions into a stock price.</p>
-      <div class="row"><span class="price">$39</span><span class="btn btn-navy" style="padding:10px 16px">View</span></div></div>
-    </a>
-    <div class="product" data-courses="entrepreneurship,finance,intro">
-      <a class="thumb" href="https://payhip.com/b/XMp3I" target="_blank" rel="noopener"><img src="/assets/img/investor-room-cover.jpg" alt="The Investor Room cover"></a>
-      <div class="info"><span class="meta">Game · 90 minutes · Investing</span><h3>The Investor Room</h3><p class="muted" style="font-size:.95rem">Firms get $10,000, hunt the red flags in five startup pitches, place their bets, then see who made money. A self-scoring workbook runs the leaderboard.</p>
-      <div class="row"><span class="price">$12</span><a class="btn btn-navy" data-checkout="investorRoom" style="padding:10px 16px">Buy</a></div></div>
-    </div>
-    <div class="product" data-courses="marketing,ethics,management,intro">
-      <a class="thumb" href="https://payhip.com/b/LvAlV" target="_blank" rel="noopener"><img src="https://pe56d.s3.amazonaws.com/o_1k7ps3gfdmtl6rr1ki839uli51f.jpg" alt="The Doorbuster Disaster cover" style="object-position:left center"></a>
-      <div class="info"><span class="meta">Simulation · 90 minutes · Business law &amp; customer service</span><h3>The Doorbuster Disaster</h3><p class="muted" style="font-size:.95rem">Teams run a big-box store through six Black Friday crises while a self-scoring Google Sheets dashboard puts every decision on the projector.</p>
-      <p style="font-size:.9rem;margin:6px 0 0"><b>Free through Black Friday</b> with code <b>DOORBUSTER</b></p>
-      <div class="row"><span class="price">$15</span><a class="btn btn-navy" data-checkout="doorbuster" style="padding:10px 16px">Buy</a></div></div>
-    </div>
-    <div class="product" data-courses="management,economics,intro">
-      <a class="thumb" href="https://payhip.com/b/7aRB5" target="_blank" rel="noopener"><img src="https://pe56d.s3.amazonaws.com/o_1k7q7kur01r8ctqu1d7oliv1lkn1f.jpg" alt="Midnight at Owl Creek cover" style="object-position:left center"></a>
-      <div class="info"><span class="meta">Simulation · 50 or 75 minutes · Collective bargaining</span><h3>Midnight at Owl Creek</h3><p class="muted" style="font-size:.95rem">A union contract expires at midnight. Teams bargain wages, health premiums, overtime and a two-tier pay scale, then find out what their deal left on the table.</p>
-      <div class="row"><span class="price">$12</span><a class="btn btn-navy" data-checkout="owlCreek" style="padding:10px 16px">Buy</a></div></div>
     </div>
       </div>
     </div>

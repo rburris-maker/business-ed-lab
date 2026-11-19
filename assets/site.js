@@ -26,7 +26,8 @@ const SITE = {
     disney: "https://payhip.com/b/3F0AZ",
     lego: "https://payhip.com/b/Bahq8",
     investorRoom: "https://payhip.com/b/XMp3I",
-    doorbuster: "https://payhip.com/b/LvAlV"
+    doorbuster: "https://payhip.com/b/LvAlV",
+    owlCreek: "https://payhip.com/b/7aRB5"
   },
 
   // Optional: your Teachers Pay Teachers store. Leave "" to hide it.
@@ -72,7 +73,7 @@ function footer(){
     <div><a class="brand" href="/" style="color:#fff">${LOGO}<span>Business Ed <b>Lab</b></span></a>
       <p style="margin-top:12px">Classroom-tested business resources for CTE, dual-credit and intro college teachers.</p>
       ${s?`<div class="socials">${s}</div>`:''}</div>
-    <div><h4>Shop</h4><ul><li><a href="/store">All resources</a></li><li><a href="/case-cracker">Case Cracker series</a></li><li><a href="/stitch-and-stride">Stitch &amp; Stride</a></li><li><a href="https://payhip.com/b/XMp3I" target="_blank" rel="noopener">The Investor Room</a></li><li><a href="https://payhip.com/b/LvAlV" target="_blank" rel="noopener">The Doorbuster Disaster</a></li><li><a href="/free">Free resource</a></li>${SITE.tpt?`<li><a href="${SITE.tpt}" target="_blank" rel="noopener">Teachers Pay Teachers</a></li>`:''}</ul></div>
+    <div><h4>Shop</h4><ul><li><a href="/store">All resources</a></li><li><a href="/case-cracker">Case Cracker series</a></li><li><a href="/stitch-and-stride">Stitch &amp; Stride</a></li><li><a href="https://payhip.com/b/XMp3I" target="_blank" rel="noopener">The Investor Room</a></li><li><a href="https://payhip.com/b/LvAlV" target="_blank" rel="noopener">The Doorbuster Disaster</a></li><li><a href="https://payhip.com/b/7aRB5" target="_blank" rel="noopener">Midnight at Owl Creek</a></li><li><a href="/free">Free resource</a></li>${SITE.tpt?`<li><a href="${SITE.tpt}" target="_blank" rel="noopener">Teachers Pay Teachers</a></li>`:''}</ul></div>
     <div><h4>Info</h4><ul><li><a href="/about">About</a></li><li><a href="/license">Terms of use</a></li><li><a href="mailto:${SITE.email}">${SITE.email}</a></li></ul></div>
   </div><div class="legal"><span>© ${new Date().getFullYear()} ${SITE.name}. All rights reserved.</span><span>Secure checkout and instant download through Payhip.</span></div></div>`;
 }
